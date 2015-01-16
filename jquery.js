@@ -1,11 +1,10 @@
 // JavaScript Document
 
 $(document).ready(function(){
-	$('#login_button').hover(
-		function(){
-			$(this).addClass('login_highlight');
-		},
-		function(){
-			$(this).removeClass('login_highlight');
-		})
-	});
+	
+	$('#login').hover(
+	function(){$(this).css({'background-color' : '#2499d7', 'border-color' : '#2499d7'})}, 
+	function(){$(this).css({'background-color' : '#247BD7', 'border-color' : '#247BD7'})}
+	);
+	
+});

@@ -58,7 +58,7 @@ h1{
 	padding: 15px;
 	}
 h2{
-	font-size:36px; 
+	font-size:46px; 
 	text-align:center;
 	}
 	
@@ -69,7 +69,8 @@ h2{
 	}
 #login_details{
 	width: 30%;
-	margin: 40px auto 20px auto;
+	min-width:325px;
+	margin: 40px auto;
 	text-align:center;
 	border: solid 3px #1D1D1D;
 	border-radius:3px;
@@ -90,8 +91,4 @@ h2{
 	line-height:80px;
 	border: solid 3px #247BD7;
 	border-radius:3px;
-	}
-.login_highlight{
-	background-color: #5379D3;
-	outline-color: #C8DB60;
 	}
