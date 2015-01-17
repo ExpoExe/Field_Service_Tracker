@@ -1,7 +1,6 @@
 
 <?php 
 include 'core/init.php';
-require 'core/database/connect.php';
 include 'includes/head.php'; 
 ?>
 
@@ -42,26 +41,7 @@ include 'includes/head.php';
         <div onClick="document.forms['login_form'].submit();" id="login">Login</div>
         <div id="registration_container">
         	<p>Don't have an account yet?<br>
-            <span id="register_here" class="fake-link">Register</span></p>
-            <form id="registration_form" name="register">
-            	<table border="0">
-                  <tbody>
-                    <tr>
-                      <td>Username:</td>
-                      <td><input type="text" name="usernameReg"></td>
-                    </tr>
-                    <tr>
-                      <td>Password:</td>
-                      <td><input type="text" name="passwordReg"></td>
-                    </tr>
-                    <tr>
-                      <td>Email: <span style="color:#727272;">(optional)</span></td>
-                      <td><input type="email" name="emailReg"></td>
-                    </tr>
-                  </tbody>
-				</table>
-                <input type="submit" value="Register" name="submitReg">
-            </form>
+            <span onClick="location.href='register.php'" id="register_here" class="fake-link">Register</span></p><br>
         </div>
     </div>
 </body>

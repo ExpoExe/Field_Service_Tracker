@@ -85,6 +85,12 @@ input{
 	padding-top: 10%;
 	text-align:center;
 	}
+#reg_intro{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 10%;
+	text-align:center;
+	}
 #login_details{
 	width: 30%;
 	min-width:375px;
@@ -102,10 +108,11 @@ input{
 	}
 #error_container{
 	width: 30%;
-	height: 100px;
+	margin: 0 auto;
+	height: 70px;
 	}
 #login{
-	width: 30%;
+	width: 40%;
 	height: 80px;
 	background-color:#247BD7;
 	margin: 10px auto 20px auto;
@@ -117,14 +124,14 @@ input{
 	cursor: pointer;
 	}
 #registration_container{
-	width: 30%;
-	margin: 0 auto;
+	width: 43%;
+	margin: 0 auto 30px auto;
 	text-align:right;
 	overflow:hidden;
 	}
 #registration_container table{
 	margin: 10px auto;
-	width:90%;
+	width:100%;
 	}
 #registration_container td{
 	padding: 10px 10px 10px 5px;
