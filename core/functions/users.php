@@ -12,7 +12,14 @@ function register_user($register_data){
 	$fields = '`' . implode('`, `', array_keys($register_data)) . '`';
 	$data = '\'' .  implode('\', \'', $register_data) . '\'';
 	
+	//Add new user to `users` table
 	$db->query("INSERT INTO `users` ($fields) VALUES ($data)");
+			
+	//Create new table for new user
+	$user_id = $db->query("SELECT `user_id` FROM `users` WHERE `username` = '{$register_data['username']}'")->fetch_assoc();
+	$new_table = $register_data['username'] . $user_id['user_id'];
+	$db->query("CREATE TABLE $new_table AS (SELECT * FROM `user_template`);");
+	$db->query("UPDATE $new_table SET `user_id` = {$user_id['user_id']}");
 	
 }
 

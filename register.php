@@ -52,7 +52,9 @@ if(isset($_GET['success']) && empty($_GET['success'])){
 			'email' 		=> $_POST['emailReg']
 		);
 		
+			
 		register_user($register_data);
+
 		header('Location: register.php?success');
 		exit();
 		
