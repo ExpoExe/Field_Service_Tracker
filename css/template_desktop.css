@@ -12,7 +12,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, header, hgroup, 
+figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -49,9 +49,9 @@ table {
 /*GLOBAL*/
 body{
 	width: 100%;
-	min-height: 100%;
-	background-color:#393636;
-	color:#F5F3F3;
+	background-color: #393636;
+	font-size: 22px;
+	color: #F5F3F3;
 	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
 	}
 h1{
@@ -60,79 +60,99 @@ h1{
 	padding: 15px;
 	}
 h2{
-	font-size:46px; 
+	margin: 25px auto 15px auto;
+	padding: 10px;
+	width: 400px;
+	font-size:26px; 
 	text-align:center;
+	border: solid 2px black;
 	}
 input{
 	background-color:#838383;
-	border: solid 1px #000000;
-	border-radius: 1px;
-	width: 100%;
+	border: solid 2px #000000;
+	border-radius: 2px;
+	width: 80px;
 	height: 25px;
-	font-size:18px;
-	padding: 3px;
+	font-size: 22px;
+	padding: 4px;
+	text-align:center;
+	}
+textarea{
+	background-color:#838383;
+	border: solid 2px #000000;
+	border-radius: 2px;
+	vertical-align: middle;
+	width: 90%;
+	height: 100px;
+	font-size: 16px;
+	padding: 4px;
+	margin-top: 10px;
 	}
 .fake-link{
     color:#2499d7;
     text-decoration: underline;
     cursor: pointer;
-}
-	
-/*INTRO*/
-#intro{
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 10%;
-	text-align:center;
 	}
-#reg_intro{
-	width: 80%;
-	margin: 0 auto;
-	padding-top: 10%;
-	text-align:center;
-	}
-#login_details{
-	width: 30%;
-	min-width:375px;
-	margin: 40px auto 25px auto;
-	text-align:center;
-	border: solid 3px #1D1D1D;
-	border-radius:3px;
-	padding: 5px;
-	}
-#login_details table{
-	width:100%;
-	}
-#login_details td{
-	padding: 10px;
-	}
-#error_container{
-	width: 30%;
-	margin: 0 auto;
-	height: 70px;
-	}
-#login{
-	width: 40%;
-	height: 80px;
+.view_button{
+	width: 50%;
+	height: 30px;
+	margin-top: 20px;
 	background-color:#247BD7;
-	margin: 10px auto 20px auto;
-	text-align:center;
-	font-size:24px;
-	line-height:80px;
-	border: solid 3px #247BD7;
-	border-radius:3px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 30px;
+	border: solid 2px #233C41;
+	border-radius: 3px;
 	cursor: pointer;
 	}
-#registration_container{
-	width: 43%;
-	margin: 0 auto 30px auto;
-	text-align:right;
-	overflow:hidden;
+
+/*PAGE STYLES*/
+#logout{
+	width: 140px;
+	height: 80px;
+	background-color:#247BD7;
+	float: right;
+	margin: 30px 50px 0 0;
+	text-align: center;
+	font-size: 24px;
+	line-height: 80px;
+	border-radius: 3px;
+	cursor: pointer;
 	}
-#registration_container table{
+#newInput_container{
+	width: 60%;
+	margin: 0 auto;
+	}
+#newInput{
+	width: 75%;
 	margin: 10px auto;
-	width:100%;
+	padding: 2%;
+	border: solid 2px #000000;
 	}
-#registration_container td{
-	padding: 10px 10px 10px 5px;
+#counter li{
+	float: left;
+	clear: left;
+	width: 100%;
+	padding-bottom: 1em;
+	}
+#counter label{
+	float:left;
+	width: 10em;
+	margin-right: 1em;
+	}
+#update_button{
+	width: 100%;
+	height: 50px;
+	background-color:#247BD7;
+	margin: 30px 50px 0 0;
+	text-align: center;
+	font-size: 24px;
+	line-height: 50px;
+	cursor: pointer;
+	}
+#footer{
+	clear:both;
+	width: 100%;
+	height: 80px;
+	background-color:#000000;
 	}

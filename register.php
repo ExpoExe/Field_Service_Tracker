@@ -1,6 +1,7 @@
 <?php
 
 include 'core/init.php';
+logged_in_redirect();
 include 'includes/head.php'; 
 
 $success = "";
@@ -134,5 +135,5 @@ if(isset($_GET['success']) && empty($_GET['success'])){
         </div>
     </div>
 </body>
-
+</html>
 

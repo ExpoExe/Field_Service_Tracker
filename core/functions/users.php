@@ -2,6 +2,11 @@
 
 require 'core/database/connect.php';
 
+/*
+LOGGING IN AND REGISTERING
+User database interaction below
+*/
+
 function register_user($register_data){
 	
 	global $db;
@@ -88,6 +93,47 @@ function login($username, $password){
 	}
 	
 	return ($user_id !== NULL) ? $user_id : false;
+}
+
+/*
+USER DATABASE INTERACTION
+*/
+
+
+function addUp(){
+	
+	
+	
+}
+
+
+function update($update_data){
+	
+	global $db;
+	global $user_data;
+	
+	array_walk($update_data, 'array_sanitize_int');
+	
+	$fields = '`' . implode('`, `', array_keys($update_data)) . '`';
+	$data = '\'' .  implode('\', \'', $update_data) . '\'';
+	$table_name = $user_data['username'] . $user_data['user_id'];
+	$query = "UPDATE $table_name SET ";
+	
+	foreach($update_data as $key=>$value){
+		if($key == 'other_hours_desc'){
+			$query .= $key  . '=\'' . $value . '\', ';
+		}else{
+			$query .= $key  . '=' . $value . ', ';
+		}
+	}
+	
+	$query[(strlen($query)-2)] = '';
+	
+	//Add data to correct user table
+	$db->query($query);
+
+	addUp();
+
 }
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 
 include 'core/init.php';
+logged_in_redirect();
 include 'includes/head.php'; 
 
 $username = $_POST['username'];
@@ -20,6 +21,8 @@ if(!empty($_POST)){
 		}
 		else{
 			$_SESSION['user_id'] = $login;
+			$_SESSION['username'] = $username;
+
 			sleep(1);
 			header('Location: main.php');
 			exit();			
@@ -52,32 +55,20 @@ if(!empty($_POST)){
             </form>
         </div>
         <div id="error_container">
-        <?php echo output_errors($errors); ?>
+        <?php 
+		
+		if(!empty($errors)){
+			echo output_errors($errors); 
+		}
+		
+		?>
         </div>
         <div onClick="document.forms['login_form'].submit();" id="login">Login</div>
         
         <div id="registration_container">
         	<p>Don't have an account yet?<br>
-            <span id="register_here" class="fake-link">Register</span></p>
-            <form id="registration_form" name="register">
-            	<table border="0">
-                  <tbody>
-                    <tr>
-                      <td>Username:</td>
-                      <td><input type="text" name="usernameReg"></td>
-                    </tr>
-                    <tr>
-                      <td>Password:</td>
-                      <td><input type="text" name="passwordReg"></td>
-                    </tr>
-                    <tr>
-                      <td>Email: <span style="color:#727272;">(optional)</span></td>
-                      <td><input type="email" name="emailReg"></td>
-                    </tr>
-                  </tbody>
-				</table>
-                <input type="submit" value="Register" name="submitReg">
-            </form>
+            <span onClick="location.href='register.php'" id="register_here" class="fake-link">Register</span></p>
         </div>
     </div>
 </body>
+</html>
