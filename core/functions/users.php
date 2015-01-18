@@ -4,7 +4,6 @@ require 'core/database/connect.php';
 
 /*
 LOGGING IN AND REGISTERING
-User database interaction below
 */
 
 function register_user($register_data){
@@ -99,11 +98,103 @@ function login($username, $password){
 USER DATABASE INTERACTION
 */
 
+function check_date(){
+	
+	global $db;
+	global $table_name;
+	
+	$lastmodified = $db->query("SELECT `lastmodified` FROM $table_name")->fetch_assoc();
+	
+	//Convert query result to string			
+	$old_date = implode("-", $lastmodified);
+	//Trim to year-month-day
+	$old_date = substr($old_date, 0, 10);
+	
+	//Get date at time of update as a string
+	$new_date = date("Y-m-d H:i:s O");
+	//Trim to year-month-day
+	$new_date = substr($new_date, 0, 10);
+	
+	//Create arrays out of trimmed dates
+	$old_date = explode('-', $old_date);
+	$new_date = explode('-', $new_date);
+	
+	/*
+	Compare day [2], month [1], and year [0]
+	Return values tell add_up() how to sum data from update()
+	1 = Same day. All fields must be updated
+	2 = Different day, same month and year. Day must be reset, month must update, year must update
+	3 = Different month, same year. Day and month must be reset, year must update
+	4 = Different year. All fields must reset then update
+	*/
+	if($old_date[2] == $new_date[2] && $old_date[1] == $new_date[1] && $old_date[0] == $new_date[0]){
+		return 1;
+	}else if($old_date[1] == $new_date[1] && $old_date[0] == $new_date[0]){
+		return 2;
+	}else if($old_date[0] == $new_date[0]){
+		return 3;
+	}else{
+		return 4;
+	}
 
-function addUp(){
+}
+
+function add_up($update_data){
 	
+	global $db;
+	global $table_name;
 	
+	$data = $update_data;
 	
+	$fields = '`' . implode('`, `', array_keys($update_data)) . '`';
+
+	$current_data = $db->query("SELECT $fields FROM $table_name")->fetch_assoc();	
+
+	switch(check_date()){
+	
+		case 1:
+			//Update all fields
+			foreach($current_data as $key=>$value){
+				$data[$key]  +=  $value;	
+			}
+			return $data;
+			break;
+		case 2:
+			//Reset day fields, set to new data
+			foreach(array_slice($current_data, 0, 7) as $key=>$value){
+				$data[$key]  =  $value;	
+			}
+			//Update month and year fields
+			foreach(array_slice($current_data, 8) as $key=>$value){
+				$data[$key]  +=  $value;	
+			}
+			return $data;
+			break;
+		case 3:
+			//Reset day and month fields, set to new data
+			foreach(array_slice($current_data, 0, 15) as $key=>$value){
+				$data[$key]  =  $value;	
+			}
+			//Update year fields
+			foreach(array_slice($current_data, 16) as $key=>$value){
+				$data[$key]  +=  $value;	
+			}
+			return $data;
+			break;
+		case 4:
+			//Reset all fields, set to new data
+			foreach($current_data as $key=>$value){
+				$data[$key]  =  $value;	
+			}
+			return $data;
+			break;
+		default:
+			echo "It looks like something horrible happened. Please let me know if you see this.";
+			return $data;
+			break;
+
+	}
+
 }
 
 
@@ -111,28 +202,26 @@ function update($update_data){
 	
 	global $db;
 	global $user_data;
+	global $table_name;
 	
+	//Clean data to protect against MySQL injection ???
 	array_walk($update_data, 'array_sanitize_int');
 	
-	$fields = '`' . implode('`, `', array_keys($update_data)) . '`';
-	$data = '\'' .  implode('\', \'', $update_data) . '\'';
-	$table_name = $user_data['username'] . $user_data['user_id'];
+	//Calculate correct and up-to-date information
+	$data = add_up($update_data);
+	
 	$query = "UPDATE $table_name SET ";
 	
-	foreach($update_data as $key=>$value){
-		if($key == 'other_hours_desc'){
-			$query .= $key  . '=\'' . $value . '\', ';
-		}else{
-			$query .= $key  . '=' . $value . ', ';
-		}
+	//Create query of all fields and values
+	foreach($data as $key=>$value){
+		$query .= $key  . '=' . $value . ', ';
 	}
 	
+	//Remove last comma
 	$query[(strlen($query)-2)] = '';
 	
 	//Add data to correct user table
 	$db->query($query);
-
-	addUp();
 
 }
 

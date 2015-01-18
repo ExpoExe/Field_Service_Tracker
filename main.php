@@ -2,30 +2,15 @@
 include 'core/init.php';
 protect_page();
 include 'includes/head.php'; 
-
-if(empty($_POST) === true){
-	$_POST['hours'] = 0;
-	$_POST['magazines'] = 0;
-	$_POST['tracts'] = 0;
-	$_POST['brochures'] = 0;
-	$_POST['books'] = 0;
-	$_POST['rv_count'] = 0;
-	$_POST['study_count'] = 0;
-	$_POST['other_hours_desc'] ="";
-	$_POST['other_hours'] = 0;
-}
 	
 foreach($_POST as $key=>&$value){
 	if(empty($value)  === true){
-		if($key === $_POST['other_hours_desc']){
-			$value = "";
-		}else{
-			$value = 0;
-		}
+		$value = 0;
 	}
 }	
-	
-if(empty($errors) === true){
+
+		
+if(empty($_POST) === false){
 	$update_data = array(
 		'hours_day' 			=> $_POST['hours'],
 		'magazines_day' 		=> $_POST['magazines'],
@@ -34,11 +19,27 @@ if(empty($errors) === true){
 		'books_day' 			=> $_POST['books'],
 		'rv_count_day' 			=> $_POST['rv_count'],
 		'study_count_day' 		=> $_POST['study_count'],
-		'other_hours_desc' 		=> $_POST['other_hours_desc'],
 		'other_hours_day' 		=> $_POST['other_hours'],
+		'hours_month' 			=> $_POST['hours'],
+		'magazines_month' 		=> $_POST['magazines'],
+		'tracts_month'			=> $_POST['tracts'],
+		'brochures_month' 		=> $_POST['brochures'],
+		'books_month' 			=> $_POST['books'],
+		'rv_count_month' 		=> $_POST['rv_count'],
+		'study_count_month' 	=> $_POST['study_count'],
+		'other_hours_month' 	=> $_POST['other_hours'],
+		'hours_year' 			=> $_POST['hours'],
+		'magazines_year' 		=> $_POST['magazines'],
+		'tracts_year'			=> $_POST['tracts'],
+		'brochures_year' 		=> $_POST['brochures'],
+		'books_year' 			=> $_POST['books'],
+		'rv_count_year' 		=> $_POST['rv_count'],
+		'study_count_year' 		=> $_POST['study_count'],
+		'other_hours_year' 		=> $_POST['other_hours'],
 	);
 	
 	update($update_data);
+	header('Location: updated.php');
 	
 }
 
@@ -88,10 +89,6 @@ if(empty($errors) === true){
                     <br><div onClick="location.href='callbook.php'" class="view_button">View Callbook</div>
                 </li>
             	<li style="font-size:28px; text-decoration:underline;">Other Forms of Service</li>
-                <li>
-                    <label for="other_hours_desc">Description: </label>
-                    <textarea name="other_hours_desc"></textarea>                
-                </li>
                 <li>
                     <label for="other_hours">Hours: </label>
                     <input type="number" name="other_hours">
