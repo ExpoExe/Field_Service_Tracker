@@ -53,56 +53,54 @@ if(empty($_POST) === false){
 <div style=" margin-bottom: 20px; clear:both;"></div>
 
 <div id="newInput_container">
-	<h1>How Did Your Day Go?</h1>
-    <div id="newInput">
-    	<form name="update_data" method="post" action="">
-        	<fieldset id="counter">
-            	<legend></legend>
-                <ol>
-                <li>
-                    <label for="hours">Hours: </label>
-                    <input type="number" name="hours">
-                </li>
-                <li>
-                    <label for="magazines">Magazines: </label>
-                    <input type="number" name="magazines">
-                </li>
-                <li>
-                    <label for="tracts">Tracts: </label>
-                    <input type="number" name="tracts">
-                </li>
-                <li>
-                    <label for="brochures">Brochures: </label>
-                    <input type="number" name="brochures">
-                </li>
-                <li>
-                    <label for="books">Books: </label>
-                    <input type="number" name="books">
-                </li>
-                <li>
-                    <label for="rv_count">Return Visits: </label>
-                    <input type="number" name="rv_count">
-                </li>
-                <li>
-                    <label for="study_count">Bible Studies: </label>
-                    <input type="number" name="study_count">
-                    <br><div onClick="location.href='callbook.php'" class="view_button">View Callbook</div>
-                </li>
-            	<li style="font-size:28px; text-decoration:underline;">Other Forms of Service</li>
-                <li>
-                    <label for="other_hours">Hours: </label>
-                    <input type="number" name="other_hours">
-                </li>
-                </ol>
-            </fieldset>
-        </form>
-        <div onClick="document.forms['update_data'].submit();" id="update_button">Update</div><br>
-        <?php 
-			if(empty($errors) === false){
-				echo output_errors($errors);
-			}
-		?>
-    </div>
+<h1>How Did Your Day Go?</h1>
+<div id="newInput">
+    <form name="update_data" method="post" action="">
+        <fieldset id="counter">
+            <legend></legend>
+            <ol>
+            <li>
+                <label for="hours">Hours: </label>
+                <input type="number" name="hours">
+            </li>
+            <li>
+                <label for="magazines">Magazines: </label>
+                <input type="number" name="magazines">
+            </li>
+            <li>
+                <label for="tracts">Tracts: </label>
+                <input type="number" name="tracts">
+            </li>
+            <li>
+                <label for="brochures">Brochures: </label>
+                <input type="number" name="brochures">
+            </li>
+            <li>
+                <label for="books">Books: </label>
+                <input type="number" name="books">
+            </li>
+            <li>
+                <label for="rv_count">Return Visits: </label>
+                <input type="number" name="rv_count">
+            </li>
+            <li>
+                <label for="study_count">Bible Studies: </label>
+                <input type="number" name="study_count">
+                <br><div onClick="location.href='callbook.php'" class="view_button">View Callbook</div>
+            </li>
+            <li style="font-size:28px; text-decoration:underline; text-align:center;">Other Forms of Service</li>
+            <li>
+                <label for="other_hours">Hours: </label>
+                <input type="number" name="other_hours">
+            </li>
+            </ol>
+        </fieldset>
+    </form>
+    <div onClick="document.forms['update_data'].submit();" id="update_button">Update</div><br>
 </div>
+</div>
+
+<?php include 'includes/stats.php'; ?>
+    
 </body>
 </html>

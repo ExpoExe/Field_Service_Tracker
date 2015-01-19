@@ -95,8 +95,17 @@ function login($username, $password){
 }
 
 /*
-USER DATABASE INTERACTION
+USER SPECIFIC TABLE INTERACTION
 */
+
+function get_all_current_data(){
+	
+	global $db;
+	global $table_name;
+	
+	return $db->query("SELECT * FROM $table_name")->fetch_assoc();
+	
+}
 
 function check_date(){
 	

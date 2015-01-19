@@ -13,13 +13,15 @@ include 'includes/head.php';
 
 <div id="newInput_container">
 <h2>Your data has been successfully updated!</h2>
-        <?php 
-			if(empty($errors) === false){
-				echo output_errors($errors);
-			}	
-		?>
+
         <div onClick="location.href='main.php'" id="update_button">Have more to Update?</div><br>
+        <h1>OR</h1>
+        <br><div onClick="location.href='callbook.php'" class="view_button">View Callbook</div>
+
 
 </div>
+
+        <?php include 'includes/stats.php'; ?>
+
 </body>
 </html>

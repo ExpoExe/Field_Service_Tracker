@@ -61,6 +61,13 @@ h2{
 	font-size:46px; 
 	text-align:center;
 	}
+h3{
+	margin: 15px auto 5px auto;
+	padding: 5px;
+	font-size:18px; 
+	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	text-align:center;
+	}
 input{
 	background-color:#838383;
 	border: solid 1px #000000;
@@ -74,7 +81,19 @@ input{
     color:#2499d7;
     text-decoration: underline;
     cursor: pointer;
-}
+	}
+.view_button{
+	width: 50%;
+	height: 35px;
+	margin: 10px auto;
+	background-color:#247BD7;
+	text-align: center;
+	font-size: 13px;
+	line-height: 35px;
+	border: solid 2px #233C41;
+	border-radius: 3px;
+	cursor: pointer;
+	}
 
 /*PAGE STYLES*/
 #logout{
@@ -88,4 +107,52 @@ input{
 	border: solid 2px #247BD7;
 	border-radius:3px;
 	cursor: pointer;
+	}
+#newInput_container{
+	width: 80%;
+	margin: 0 auto;
+	}
+#newInput{
+	width: 75%;
+	margin: 10px auto;
+	padding: 2%;
+	border: solid 2px #000000;
+	}
+#counter li{
+	float: left;
+	clear: left;
+	width: 95%;
+	padding-bottom: 1em;
+	}
+#counter label{
+	float:left;
+	width: 4em;
+	margin-right: 1em;
+	}
+#update_button{
+	width: 100%;
+	height: 50px;
+	background-color:#247BD7;
+	margin: 30px 50px 0 0;
+	text-align: center;
+	font-size: 24px;
+	line-height: 50px;
+	cursor: pointer;
+	}
+.stat_box_wrap{
+	width: 80%;
+	margin: 0 auto;
+	}
+.stat_box_wrap table{
+	width: 90%;
+	}
+.stat_box_wrap th, td{
+	text-align: left;
+	padding: 5px;
+	}
+.stat_box{
+	width: 75%;
+	margin: 2% auto 2% auto;
+	padding: 2%;
+	border: solid 2px #000000;
 	}

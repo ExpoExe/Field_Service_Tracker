@@ -9,5 +9,6 @@ include 'includes/head.php';
     <div style="font-size:24px; text-align:center;"> 
     <span onClick="location.href='index.php'" class="fake-link">Click Here to go to the Login Screen</span>
     </div>
+    
 </body>
 </html>
