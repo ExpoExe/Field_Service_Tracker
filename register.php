@@ -52,7 +52,6 @@ if(isset($_GET['success']) && empty($_GET['success'])){
 			'last_name' 	=> $_POST['last_nameReg'],
 			'email' 		=> $_POST['emailReg']
 		);
-		
 			
 		register_user($register_data);
 

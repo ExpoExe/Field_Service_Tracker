@@ -72,7 +72,7 @@ input{
 	background-color:#838383;
 	border: solid 1px #000000;
 	border-radius: 1px;
-	width: 100%;
+	width: 30%;
 	height: 25px;
 	font-size:18px;
 	padding: 3px;
@@ -109,25 +109,25 @@ input{
 	cursor: pointer;
 	}
 #newInput_container{
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	}
 #newInput{
-	width: 75%;
+	width: 85%;
 	margin: 10px auto;
 	padding: 2%;
 	border: solid 2px #000000;
 	}
 #counter li{
-	float: left;
-	clear: left;
+	text-align:center;
+	margin: 0 auto;
 	width: 95%;
 	padding-bottom: 1em;
 	}
 #counter label{
 	float:left;
-	width: 4em;
-	margin-right: 1em;
+	width: 6em;
+	margin-right: 2em;
 	}
 #update_button{
 	width: 100%;
@@ -140,7 +140,7 @@ input{
 	cursor: pointer;
 	}
 .stat_box_wrap{
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	}
 .stat_box_wrap table{
@@ -149,9 +149,10 @@ input{
 .stat_box_wrap th, td{
 	text-align: left;
 	padding: 5px;
+	border-bottom: solid 1px #247BD7;
 	}
 .stat_box{
-	width: 75%;
+	width: 85%;
 	margin: 2% auto 2% auto;
 	padding: 2%;
 	border: solid 2px #000000;

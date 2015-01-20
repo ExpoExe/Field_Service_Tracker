@@ -1,5 +1,6 @@
 <?php $display_data = get_all_current_data(); ?>
 
+<div id="statFade1">
 <div class="stat_box_wrap">
 	<h3>Todays Stats</h3>
     <div class="stat_box">
@@ -41,7 +42,9 @@
         </table>  
     </div>
 </div>
+</div>
 
+<div id="statFade2">
 <div class="stat_box_wrap">
 	<h3>Your Month At a Glance...</h3>
     <div class="stat_box">
@@ -83,7 +86,9 @@
         </table>  
     </div>
 </div>
+</div>
 
+<div id="statFade3">
 <div class="stat_box_wrap">
 	<h3>Your Year At a Glance...</h3>
     <div class="stat_box">
@@ -124,4 +129,5 @@
           </tbody>
         </table>
     </div>
+</div>
 </div>

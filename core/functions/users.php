@@ -9,6 +9,8 @@ LOGGING IN AND REGISTERING
 function register_user($register_data){
 	
 	global $db;
+	global $table_name;
+	global $session_user_id;
 	
 	array_walk($register_data, 'array_sanitize');
 	$register_data['password'] = md5($register_data['password']);
@@ -18,13 +20,17 @@ function register_user($register_data){
 	
 	//Add new user to `users` table
 	$db->query("INSERT INTO `users` ($fields) VALUES ($data)");
-			
-	//Create new table for new user
-	$user_id = $db->query("SELECT `user_id` FROM `users` WHERE `username` = '{$register_data['username']}'")->fetch_assoc();
-	$new_table = $register_data['username'] . $user_id['user_id'];
-	$db->query("CREATE TABLE $new_table AS (SELECT * FROM `user_template`);");
-	$db->query("UPDATE $new_table SET `user_id` = {$user_id['user_id']}");
 	
+	$user_id = $db->query("SELECT `user_id` FROM `users` WHERE `username` = '{$register_data['username']}'")->fetch_assoc();
+	$table_name = $register_data['username'] . $user_id['user_id'];
+	
+	//create new tables
+	$db->query("CREATE TABLE $table_name AS (SELECT * FROM `user_template`)");
+	$db->query("UPDATE $table_name SET `user_id` = {$user_id['user_id']}");
+
+	$new_table = ($table_name . "_callbook");
+	$db->query("CREATE TABLE $new_table AS (SELECT * FROM `callbook_template`)");
+	$db->query("UPDATE $new_table SET `user_id` = {$user_id['user_id']}");
 }
 
 function logged_in(){
@@ -95,14 +101,14 @@ function login($username, $password){
 }
 
 /*
-USER SPECIFIC TABLE INTERACTION
+USER SPECIFIC TABLES
 */
 
 function get_all_current_data(){
 	
 	global $db;
 	global $table_name;
-	
+
 	return $db->query("SELECT * FROM $table_name")->fetch_assoc();
 	
 }
@@ -231,6 +237,25 @@ function update($update_data){
 	
 	//Add data to correct user table
 	$db->query($query);
+
+}
+
+/*
+CALLBOOK FUNCTIONS
+*/
+
+function has_calls(){
+	
+	global $db;
+	global $callbook_name;
+	
+	$result = $db->query("SELECT * FROM $callbook_name");
+	
+	if ($result->num_rows > 1){
+		return true;	
+	}else{
+		return false;	
+	}
 
 }
 

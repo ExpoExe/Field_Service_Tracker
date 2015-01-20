@@ -9,37 +9,42 @@ foreach($_POST as $key=>&$value){
 	}
 }	
 
+$success = "";
+
+if(isset($_GET['success']) && empty($_GET['success'])){
+	$success = "Your data has been updated!";
+}else{
+	if(empty($_POST) === false && empty($errors) === true){
+		$update_data = array(
+			'hours_day' 			=> $_POST['hours'],
+			'magazines_day' 		=> $_POST['magazines'],
+			'tracts_day'			=> $_POST['tracts'],
+			'brochures_day' 		=> $_POST['brochures'],
+			'books_day' 			=> $_POST['books'],
+			'rv_count_day' 			=> $_POST['rv_count'],
+			'study_count_day' 		=> $_POST['study_count'],
+			'other_hours_day' 		=> $_POST['other_hours'],
+			'hours_month' 			=> $_POST['hours'],
+			'magazines_month' 		=> $_POST['magazines'],
+			'tracts_month'			=> $_POST['tracts'],
+			'brochures_month' 		=> $_POST['brochures'],
+			'books_month' 			=> $_POST['books'],
+			'rv_count_month' 		=> $_POST['rv_count'],
+			'study_count_month' 	=> $_POST['study_count'],
+			'other_hours_month' 	=> $_POST['other_hours'],
+			'hours_year' 			=> $_POST['hours'],
+			'magazines_year' 		=> $_POST['magazines'],
+			'tracts_year'			=> $_POST['tracts'],
+			'brochures_year' 		=> $_POST['brochures'],
+			'books_year' 			=> $_POST['books'],
+			'rv_count_year' 		=> $_POST['rv_count'],
+			'study_count_year' 		=> $_POST['study_count'],
+			'other_hours_year' 		=> $_POST['other_hours'],
+		);
 		
-if(empty($_POST) === false){
-	$update_data = array(
-		'hours_day' 			=> $_POST['hours'],
-		'magazines_day' 		=> $_POST['magazines'],
-		'tracts_day'			=> $_POST['tracts'],
-		'brochures_day' 		=> $_POST['brochures'],
-		'books_day' 			=> $_POST['books'],
-		'rv_count_day' 			=> $_POST['rv_count'],
-		'study_count_day' 		=> $_POST['study_count'],
-		'other_hours_day' 		=> $_POST['other_hours'],
-		'hours_month' 			=> $_POST['hours'],
-		'magazines_month' 		=> $_POST['magazines'],
-		'tracts_month'			=> $_POST['tracts'],
-		'brochures_month' 		=> $_POST['brochures'],
-		'books_month' 			=> $_POST['books'],
-		'rv_count_month' 		=> $_POST['rv_count'],
-		'study_count_month' 	=> $_POST['study_count'],
-		'other_hours_month' 	=> $_POST['other_hours'],
-		'hours_year' 			=> $_POST['hours'],
-		'magazines_year' 		=> $_POST['magazines'],
-		'tracts_year'			=> $_POST['tracts'],
-		'brochures_year' 		=> $_POST['brochures'],
-		'books_year' 			=> $_POST['books'],
-		'rv_count_year' 		=> $_POST['rv_count'],
-		'study_count_year' 		=> $_POST['study_count'],
-		'other_hours_year' 		=> $_POST['other_hours'],
-	);
-	
-	update($update_data);
-	header('Location: updated.php');
+		update($update_data);
+		header('Location: main.php?success');
+	}
 	
 }
 
@@ -55,7 +60,7 @@ if(empty($_POST) === false){
 <div id="newInput_container">
 <h1>How Did Your Day Go?</h1>
 <div id="newInput">
-    <form name="update_data" method="post" action="">
+    <form name="update_data" method="post" action="main.php">
         <fieldset id="counter">
             <legend></legend>
             <ol>
@@ -96,6 +101,7 @@ if(empty($_POST) === false){
             </ol>
         </fieldset>
     </form>
+    <div id="updates"> <?php echo $success; ?> </div>
     <div onClick="document.forms['update_data'].submit();" id="update_button">Update</div><br>
 </div>
 </div>

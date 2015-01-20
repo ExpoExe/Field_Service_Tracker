@@ -60,12 +60,11 @@ h1{
 	padding: 15px;
 	}
 h2{
-	margin: 25px auto 15px auto;
+	margin-bottom: 25px;
 	padding: 10px;
-	width: 400px;
 	font-size:26px; 
 	text-align:center;
-	border: solid 2px black;
+	text-decoration:underline;
 	}
 h3{
 	margin: 25px auto 15px auto;
@@ -73,6 +72,11 @@ h3{
 	font-size:30px; 
 	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
 	text-align:center;
+	}
+h4{
+	font-size:40px; 
+	text-align:center;
+	padding: 10px;
 	}
 input{
 	background-color:#838383;
@@ -147,6 +151,10 @@ textarea{
 	width: 10em;
 	margin-right: 1em;
 	}
+#updates{
+	text-align:center;
+	font-size: 18px;
+	}
 #update_button{
 	width: 100%;
 	height: 50px;
@@ -167,10 +175,71 @@ textarea{
 .stat_box_wrap th, td{
 	text-align: left;
 	padding: 5px;
+	border-bottom: solid 1px #247BD7;
 	}
 .stat_box{
 	width: 75%;
 	margin: 2% auto 2% auto;
 	padding: 2%;
 	border: solid 2px #000000;
+	}
+.returnUpdate{
+	width: 30%;
+	margin: 0 auto;
+	border: solid 3px #247BD7;
+	}
+.selectAdd1{
+	width: 40%;
+	margin: 0 auto;
+	border: solid 3px #247BD7;
+	}
+.selectAdd2{
+	width: 40%;
+	margin: 0 auto;
+	border: solid 3px #247BD7;
+	}
+#addCall{
+	width: 60%;
+	margin: 10px auto;
+	padding: 2%;
+	border: solid 2px #000000;
+	}
+#addStudy{
+	width: 60%;
+	margin: 10px auto;
+	padding: 2%;
+	border: solid 2px #000000;
+	}
+#add li{
+	float: left;
+	clear: left;
+	width: 100%;
+	padding-bottom: 1em;
+	}
+#add label{
+	float:left;
+	width: 15em;
+	margin-right: 1em;
+	}
+#add input{
+	background-color:#838383;
+	border: solid 2px #000000;
+	border-radius: 2px;
+	width: 70%;
+	height: 25px;
+	font-size: 22px;
+	padding: 4px;
+	margin: 5px;
+	text-align:left;
+	}
+#add textarea{
+	background-color:#838383;
+	border: solid 2px #000000;
+	border-radius: 2px;
+	vertical-align: middle;
+	width: 70%;
+	height: 100px;
+	font-size: 16px;
+	padding: 4px;
+	margin: 5px;
 	}
