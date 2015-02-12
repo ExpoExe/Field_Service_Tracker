@@ -198,6 +198,11 @@ textarea{
 	margin: 0 auto;
 	border: solid 3px #247BD7;
 	}
+#errors{
+	width: 90%;
+	margin: 25px auto;
+	text-align:center;
+	}
 #addCall{
 	width: 60%;
 	margin: 10px auto;
@@ -242,4 +247,9 @@ textarea{
 	font-size: 16px;
 	padding: 4px;
 	margin: 5px;
+	}
+#callbook_container{
+	width: 90%;
+	margin: 25px auto;
+	text-align:center;
 	}

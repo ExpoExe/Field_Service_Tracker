@@ -58,7 +58,7 @@ h1{
 	text-align:center;
 	}
 h2{
-	font-size:46px; 
+	font-size:36px; 
 	text-align:center;
 	}
 h3{
@@ -67,6 +67,11 @@ h3{
 	font-size:18px; 
 	font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
 	text-align:center;
+	}
+h4{
+	font-size:32px; 
+	text-align:center;
+	padding: 10px;
 	}
 input{
 	background-color:#838383;
@@ -156,4 +161,74 @@ input{
 	margin: 2% auto 2% auto;
 	padding: 2%;
 	border: solid 2px #000000;
+	}
+.returnUpdate{
+	width: 30%;
+	margin: 0 auto;
+	border: solid 3px #247BD7;
+	}
+.selectAdd1{
+	width: 40%;
+	margin: 0 auto;
+	border: solid 3px #247BD7;
+	}
+.selectAdd2{
+	width: 40%;
+	margin: 0 auto;
+	border: solid 3px #247BD7;
+	}
+#errors{
+	width: 90%;
+	margin: 25px auto;
+	text-align:center;
+	}
+#addCall{
+	width: 60%;
+	margin: 10px auto;
+	padding: 2%;
+	border: solid 2px #000000;
+	}
+#addStudy{
+	width: 60%;
+	margin: 10px auto;
+	padding: 2%;
+	border: solid 2px #000000;
+	}
+#add li{
+	float: left;
+	clear: left;
+	width: 100%;
+	padding-bottom: 1em;
+	}
+#add label{
+	float:left;
+	width: 15em;
+	margin-right: 1em;
+	}
+#add input{
+	background-color:#838383;
+	border: solid 2px #000000;
+	border-radius: 2px;
+	width: 70%;
+	height: 25px;
+	font-size: 22px;
+	padding: 4px;
+	margin: 5px;
+	text-align:left;
+	}
+#add textarea{
+	background-color:#838383;
+	border: solid 2px #000000;
+	border-radius: 2px;
+	vertical-align: middle;
+	width: 70%;
+	height: 100px;
+	font-size: 16px;
+	padding: 4px;
+	margin: 5px;
+	}
+#callbook_container{
+	width: 90%;
+	margin: 25px auto;
+	text-align:center;
 	}

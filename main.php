@@ -91,7 +91,6 @@ if(isset($_GET['success']) && empty($_GET['success'])){
             <li>
                 <label for="study_count">Bible Studies: </label>
                 <input type="number" name="study_count">
-                <br><div onClick="location.href='callbook.php'" class="view_button">View Callbook</div>
             </li>
             <li style="font-size:28px; text-decoration:underline; text-align:center;">Other Forms of Service</li>
             <li>

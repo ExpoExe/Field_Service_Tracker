@@ -168,29 +168,21 @@ function add_up($update_data){
 	switch(check_date()){
 	
 		case 1:
-			//Update all fields
+			//Update and sum all fields
 			foreach($current_data as $key=>$value){
 				$data[$key]  +=  $value;	
 			}
 			return $data;
 			break;
 		case 2:
-			//Reset day fields, set to new data
-			foreach(array_slice($current_data, 0, 7) as $key=>$value){
-				$data[$key]  =  $value;	
-			}
-			//Update month and year fields
+			//Update and sum only month and year fields
 			foreach(array_slice($current_data, 8) as $key=>$value){
 				$data[$key]  +=  $value;	
 			}
 			return $data;
 			break;
 		case 3:
-			//Reset day and month fields, set to new data
-			foreach(array_slice($current_data, 0, 15) as $key=>$value){
-				$data[$key]  =  $value;	
-			}
-			//Update year fields
+			//Update and sum only year fields
 			foreach(array_slice($current_data, 16) as $key=>$value){
 				$data[$key]  +=  $value;	
 			}
@@ -198,9 +190,6 @@ function add_up($update_data){
 			break;
 		case 4:
 			//Reset all fields, set to new data
-			foreach($current_data as $key=>$value){
-				$data[$key]  =  $value;	
-			}
 			return $data;
 			break;
 		default:
@@ -256,7 +245,28 @@ function has_calls(){
 	}else{
 		return false;	
 	}
+}
 
+function update_callbook($callbook_data){
+	
+	global $db;
+	global $callbook_name;
+	
+	//Clean data to protect against MySQL injection ???
+	array_walk($callbook_data, 'array_sanitize');
+	
+	//Return Visit or Bible Study
+	if(empty($callbook_data[4]) === true){
+		$callbook_data = array_slice($callbook_data, 0, 4);
+	}else{
+		$callbook_data = array_slice($callbook_data, 3, 5);
+	}
+	
+	//Calculate correct and up-to-date information
+	$fields = '`' . implode('`, `', array_keys($callbook_data)) . '`';
+	$data = '\'' .  implode('\', \'', $callbook_data) . '\'';
+	$db->query("INSERT INTO $callbook_name ($fields) VALUES ($data)");
+	
 }
 
 ?>
